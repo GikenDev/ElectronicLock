@@ -1,0 +1,24 @@
+﻿<Window x:Class="CardRegistration.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CardRegistration"
+        mc:Ignorable="d"
+        Title="Settings" Height="200" Width="300"
+        Name="setting"
+        WindowStartupLocation="CenterOwner"
+        Loaded="Window2_Load">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="22,68,0,0" TextWrapping="Wrap" Text="IP Address" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="94,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" TextChanged="TextBox_TextChanged1" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="126,68,0,0" TextWrapping="Wrap" Text="." VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="132,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" TextChanged="TextBox_TextChanged2" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="164,68,0,0" TextWrapping="Wrap" Text="." VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="169,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" TextChanged="TextBox_TextChanged3" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox3"/>
+        <TextBlock HorizontalAlignment="Left" Margin="202,68,0,0" TextWrapping="Wrap" Text="." VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="207,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" TextChanged="TextBox_TextChanged4" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox4"/>
+        <Button Content="キャンセル" HorizontalAlignment="Left" Margin="46,120,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="適用" HorizontalAlignment="Left" Margin="238,120,0,0" VerticalAlignment="Top" x:Name="button1" Click="button1_Click"/>
+    </Grid>
+</Window>

@@ -33,7 +33,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <!--<Button Content="設定" HorizontalAlignment="Left" Margin="54,533,0,0" VerticalAlignment="Top" Width="70" Click="OpenSetting" x:Name="settin_btn"/>-->
+        <Button Content="設定" HorizontalAlignment="Left" Margin="54,533,0,0" VerticalAlignment="Top" Width="70" Click="OpenSetting" x:Name="settin_btn"/>
         <Button Content="更新" HorizontalAlignment="Left" Margin="576,533,0,0" VerticalAlignment="Top" Width="70" Click="RefreshBtn" x:Name="refresh_btn" IsEnabled="False"/>
         <Button Content="適用" HorizontalAlignment="Left" Margin="674,533,0,0" VerticalAlignment="Top" Width="70" Click="MeiboApply" x:Name="apply_btn" IsEnabled="False"/>
     </Grid>

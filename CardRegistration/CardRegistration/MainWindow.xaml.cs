@@ -16,11 +16,36 @@ namespace CardRegistration
 {
     public partial class MainWindow : Window
     {
+        private string FTPIpAdress;
         private ObservableCollection<SampleData> SampleDataCollection;
         public MainWindow()
         {
             InitializeComponent();
             SampleDataCollection = new ObservableCollection<SampleData>();
+
+            FTPIpAdress = RegistSetting.Default.IpAddress;
+            if (FTPIpAdress == null || FTPIpAdress == "")
+            {
+                ContentRendered += (s, e) => { SettingWindow(); };
+            }
+        }
+
+        private void SettingWindow()
+        {
+            var settingWindow = new Settings
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            if (FTPIpAdress != null && FTPIpAdress != "")
+            {
+                settingWindow.ipParam = FTPIpAdress;
+            }
+            settingWindow.ShowDialog();
+            if (settingWindow.SettingParm != null)
+            {
+                FTPIpAdress = settingWindow.SettingParm["IpAddress"];
+            }
         }
 
         private void add_btn(object sender, RoutedEventArgs e)
@@ -141,6 +166,16 @@ namespace CardRegistration
                 }
                 MessageBox.Show("送信しました。");
             }
+        }
+        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            RegistSetting.Default.IpAddress = FTPIpAdress;
+            RegistSetting.Default.Save();
+        }
+
+        private void OpenSetting(object sender, RoutedEventArgs e)
+        {
+            SettingWindow();
         }
     }
 }
