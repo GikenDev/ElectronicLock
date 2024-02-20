@@ -12,6 +12,8 @@ namespace CardRegistration
         private bool _numberStatus3 = false;
         private bool _numberStatus4 = false;
         private string _ipaddress;
+        private string _login_pass;
+        private string _login_name;
         private Dictionary<string, string> _SettingParam;
         public Settings()
         {
@@ -32,6 +34,10 @@ namespace CardRegistration
                 textBox3.Text = num3;
                 textBox4.Text = num4;
             }
+            if(LoginName != null)
+            {
+                login_name.Text = LoginName;
+            }
         }
 
         public string ipParam
@@ -43,6 +49,30 @@ namespace CardRegistration
             set
             {
                 _ipaddress = value;
+            }
+        }
+
+        public string LoginName
+        {
+            get
+            {
+                return _login_name;
+            }
+            set
+            {
+                _login_name = value;
+            }
+        }
+
+        public string LoginPass
+        {
+            get
+            {
+                return _login_pass;
+            }
+            set
+            {
+                _login_pass = value;
             }
         }
 
@@ -62,11 +92,11 @@ namespace CardRegistration
         {
             if (_numberStatus0 && _numberStatus2 && _numberStatus3 && _numberStatus4)
             {
-                button1.IsEnabled = true;
+                button_apply.IsEnabled = true;
             }
             else
             {
-                button1.IsEnabled = false;
+                button_apply.IsEnabled = false;
             }
         }
 
@@ -135,16 +165,21 @@ namespace CardRegistration
             button_status();
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void Button_apply(object sender, RoutedEventArgs e)
         {
             Dictionary<string, string> UsrDetails = new Dictionary<string, string>();
             UsrDetails.Add("IpAddress", textBox0.Text + "." + textBox2.Text + "." + textBox3.Text + "." + textBox4.Text);
+            UsrDetails.Add("LoginName", login_name.Text);
+            if(login_pass.Text != "")
+            {
+                UsrDetails.Add("LoginPass", login_pass.Text);
+            }
             this.SettingParm = UsrDetails;
 
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Cancel(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

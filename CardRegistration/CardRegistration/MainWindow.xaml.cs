@@ -17,6 +17,8 @@ namespace CardRegistration
     public partial class MainWindow : Window
     {
         private string FTPIpAdress;
+        private string FTPuserName;
+        private string FTPpassword;
         private ObservableCollection<SampleData> SampleDataCollection;
         public MainWindow()
         {
@@ -24,7 +26,9 @@ namespace CardRegistration
             SampleDataCollection = new ObservableCollection<SampleData>();
 
             FTPIpAdress = RegistSetting.Default.IpAddress;
-            if (FTPIpAdress == null || FTPIpAdress == "")
+            FTPuserName = RegistSetting.Default.UserName;
+            FTPpassword = RegistSetting.Default.UserPassword;
+            if (FTPIpAdress == null || FTPIpAdress == "" || FTPuserName == null || FTPuserName == "" || FTPpassword == null || FTPpassword == "")
             {
                 ContentRendered += (s, e) => { SettingWindow(); };
             }
@@ -41,10 +45,19 @@ namespace CardRegistration
             {
                 settingWindow.ipParam = FTPIpAdress;
             }
+            if (FTPuserName != null && FTPuserName != "")
+            {
+                settingWindow.LoginName = FTPuserName;
+            }
             settingWindow.ShowDialog();
             if (settingWindow.SettingParm != null)
             {
                 FTPIpAdress = settingWindow.SettingParm["IpAddress"];
+                FTPuserName = settingWindow.SettingParm["LoginName"];
+                if (settingWindow.SettingParm.ContainsKey("LoginPass"))
+                {
+                    FTPpassword = settingWindow.SettingParm["LoginPass"];
+                }
             }
         }
 
@@ -170,6 +183,11 @@ namespace CardRegistration
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             RegistSetting.Default.IpAddress = FTPIpAdress;
+            RegistSetting.Default.UserName = FTPuserName;
+            if(FTPpassword != null || FTPpassword != "")
+            {
+                RegistSetting.Default.UserPassword = FTPpassword;
+            }
             RegistSetting.Default.Save();
         }
 
