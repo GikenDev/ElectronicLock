@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CardRegistration"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800"
+        ResizeMode="NoResize"
+        >
     <Grid>
-
+        <TextBlock HorizontalAlignment="Center" Margin="0,44,0,0" TextWrapping="Wrap" Text="学生証登録" VerticalAlignment="Top" TextAlignment="Center" FontSize="22"/>
+        <Button Content="追加" HorizontalAlignment="Left" Margin="709,100,0,0" VerticalAlignment="Top" Width="70" Click="add_btn"/>
+        <DataGrid Margin="0,155,0,100" x:Name="UsrDataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Index" Binding="{Binding Index}" Width="40"></DataGridTextColumn>
+                <DataGridTextColumn Header="学籍番号" Binding="{Binding StudentNumber}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="名前" Binding="{Binding StudentName}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="学生証ID" Binding="{Binding Uid}" Width="100"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="有効無効" Width="70">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox  HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Enabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="削除" Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox  HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--<Button Content="設定" HorizontalAlignment="Left" Margin="54,533,0,0" VerticalAlignment="Top" Width="70" Click="OpenSetting" x:Name="settin_btn"/>-->
+        <Button Content="更新" HorizontalAlignment="Left" Margin="576,533,0,0" VerticalAlignment="Top" Width="70" Click="RefreshBtn" x:Name="refresh_btn" IsEnabled="False"/>
+        <Button Content="適用" HorizontalAlignment="Left" Margin="674,533,0,0" VerticalAlignment="Top" Width="70" Click="MeiboApply" x:Name="apply_btn" IsEnabled="False"/>
     </Grid>
 </Window>
