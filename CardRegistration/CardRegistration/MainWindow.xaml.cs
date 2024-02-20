@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.IO;
+using System.Net;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,6 +37,7 @@ namespace CardRegistration
 
                 UsrDataGrid.ItemsSource = SampleDataCollection;
                 refresh_btn.IsEnabled = true;
+                apply_btn.IsEnabled = true;
             }
         }
 
@@ -115,7 +118,29 @@ namespace CardRegistration
 
         private void MeiboApply(object sender, RoutedEventArgs e)
         {
+            refresh_btn.IsEnabled = false;
+            apply_btn.IsEnabled = false;
+            Refresh();
 
+            string HeaderLine = "Index,StudentNumber,StudentName,StudentID,Enable\n";
+            ObservableCollection<SampleData> list = this.UsrDataGrid.ItemsSource as ObservableCollection<SampleData>;
+
+            if (list != null)
+            {
+                foreach (SampleData cat in list)
+                {
+                    HeaderLine += cat.Index + "," + cat.StudentNumber + "," + cat.StudentName + "," + cat.Uid + "," + cat.Enabled + "\n";
+                }
+                string DesktopDir = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                string FileName = "meibo";
+                string Extend = ".csv";
+                string FilePath = DesktopDir + "\\" + FileName + Extend;
+                using (StreamWriter sw = new StreamWriter(@FilePath, false))
+                {
+                    sw.Write(HeaderLine);
+                }
+                MessageBox.Show("送信しました。");
+            }
         }
     }
 }
