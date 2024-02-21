@@ -88,81 +88,9 @@ namespace CardRegistration
             }
         }
 
-        private void button_status()
-        {
-            if (_numberStatus0 && _numberStatus2 && _numberStatus3 && _numberStatus4)
-            {
-                button_apply.IsEnabled = true;
-            }
-            else
-            {
-                button_apply.IsEnabled = false;
-            }
-        }
-
         private void textBoxPrice_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !new Regex("[0-9]").IsMatch(e.Text);
-        }
-
-        private void TextBox_TextChanged1(object sender, TextChangedEventArgs e)
-        {
-            int strLength = textBox0.Text.Length;
-            if (strLength < 4 && strLength > 0)
-            {
-                _numberStatus0 = true;
-            }
-            else
-            {
-                _numberStatus0 = false;
-            }
-
-            button_status();
-        }
-
-        private void TextBox_TextChanged2(object sender, TextChangedEventArgs e)
-        {
-            int strLength = textBox2.Text.Length;
-            if (strLength < 4 && strLength > 0)
-            {
-                _numberStatus2 = true;
-            }
-            else
-            {
-                _numberStatus2 = false;
-            }
-
-            button_status();
-        }
-
-        private void TextBox_TextChanged3(object sender, TextChangedEventArgs e)
-        {
-            int strLength = textBox3.Text.Length;
-            if (strLength < 4 && strLength > 0)
-            {
-                _numberStatus3 = true;
-            }
-            else
-            {
-                _numberStatus3 = false;
-            }
-
-            button_status();
-        }
-
-        private void TextBox_TextChanged4(object sender, TextChangedEventArgs e)
-        {
-            int strLength = textBox4.Text.Length;
-            if (strLength < 4 && strLength > 0)
-            {
-                _numberStatus4 = true;
-            }
-            else
-            {
-                _numberStatus4 = false;
-            }
-
-            button_status();
         }
 
         private void Button_apply(object sender, RoutedEventArgs e)

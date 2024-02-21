@@ -43,8 +43,14 @@ namespace CardRegistration
             settingWindow.ShowDialog();
             if (settingWindow.SettingParm != null)
             {
-                FTPIpAdress = settingWindow.SettingParm["IpAddress"];
-                FTPuserName = settingWindow.SettingParm["LoginName"];
+                if (settingWindow.SettingParm.ContainsKey("IpAddress"))
+                {
+                    FTPIpAdress = settingWindow.SettingParm["IpAddress"];
+                }
+                if (settingWindow.SettingParm.ContainsKey("LoginName"))
+                {
+                    FTPuserName = settingWindow.SettingParm["LoginName"];
+                }
                 if (settingWindow.SettingParm.ContainsKey("LoginPass"))
                 {
                     FTPpassword = settingWindow.SettingParm["LoginPass"];

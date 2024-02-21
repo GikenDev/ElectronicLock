@@ -11,13 +11,13 @@
         Loaded="Window2_Load">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="37,32,0,0" TextWrapping="Wrap" Text="IP Address" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="109,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" TextChanged="TextBox_TextChanged1" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox0"/>
+        <TextBox HorizontalAlignment="Left" Margin="109,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox0" MaxLength="3"/>
         <TextBlock HorizontalAlignment="Left" Margin="141,32,0,0" TextWrapping="Wrap" Text="." VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="147,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" TextChanged="TextBox_TextChanged2" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox2"/>
+        <TextBox HorizontalAlignment="Left" Margin="147,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox2" MaxLength="3"/>
         <TextBlock HorizontalAlignment="Left" Margin="179,32,0,0" TextWrapping="Wrap" Text="." VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="184,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" TextChanged="TextBox_TextChanged3" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox3"/>
+        <TextBox HorizontalAlignment="Left" Margin="184,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox3" MaxLength="3"/>
         <TextBlock HorizontalAlignment="Left" Margin="217,32,0,0" TextWrapping="Wrap" Text="." VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="222,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" TextChanged="TextBox_TextChanged4" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox4"/>
+        <TextBox HorizontalAlignment="Left" Margin="222,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" PreviewTextInput="textBoxPrice_PreviewTextInput" x:Name="textBox4" MaxLength="3"/>
         <TextBlock HorizontalAlignment="Left" Margin="37,58,0,0" TextWrapping="Wrap" Text="ログイン名" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="109,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" x:Name="login_name"/>
         <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" TextWrapping="Wrap" Text="ログインパス" VerticalAlignment="Center"/>
