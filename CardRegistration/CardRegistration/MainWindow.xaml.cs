@@ -1,16 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CardRegistration
 {
@@ -176,6 +167,12 @@ namespace CardRegistration
                 using (StreamWriter sw = new StreamWriter(@FilePath, false))
                 {
                     sw.Write(HeaderLine);
+                }
+                string ftpAddress = "ftp://" + FTPIpAdress + "/ElectroKeyMeibo.csv";
+                using (WebClient wc = new WebClient())
+                {
+                    wc.Credentials = new NetworkCredential(FTPuserName, FTPpassword);
+                    wc.UploadFile(ftpAddress, FilePath);
                 }
                 MessageBox.Show("送信しました。");
             }
