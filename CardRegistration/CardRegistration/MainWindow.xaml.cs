@@ -169,12 +169,19 @@ namespace CardRegistration
                     sw.Write(HeaderLine);
                 }
                 string ftpAddress = "ftp://" + FTPIpAdress + "/ElectroKeyMeibo.csv";
-                using (WebClient wc = new WebClient())
+
+                WebClient wwc = new WebClient();
+                try
                 {
-                    wc.Credentials = new NetworkCredential(FTPuserName, FTPpassword);
-                    wc.UploadFile(ftpAddress, FilePath);
+                    wwc.Credentials = new NetworkCredential(FTPuserName, FTPpassword);
+                    wwc.UploadFile(ftpAddress, FilePath);
+
+                    MessageBox.Show("送信しました。", "Success");
                 }
-                MessageBox.Show("送信しました。");
+                catch (Exception ex)
+                {
+                    MessageBox.Show("送信に失敗しました。\nログイン名やパスワードを確認してください。", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
