@@ -176,17 +176,21 @@ namespace CardRegistration
                 }
                 string ftpAddress = "ftp://" + FTPIpAdress + "/ElectroKeyMeibo.csv";
 
-                WebClient wwc = new WebClient();
+                WebClient wc = new WebClient();
                 try
                 {
-                    wwc.Credentials = new NetworkCredential(FTPuserName, FTPpassword);
-                    wwc.UploadFile(ftpAddress, FilePath);
+                    wc.Credentials = new NetworkCredential(FTPuserName, FTPpassword);
+                    wc.UploadFile(ftpAddress, FilePath);
 
                     MessageBox.Show("送信しました。", "Success");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("送信に失敗しました。\nログイン名やパスワードを確認してください。", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    wc.Dispose();
                 }
             }
         }
